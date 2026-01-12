@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Grofers Checkout</title>
 </head>
 <body>
-  <table style="width: 100%">
+
+  <table style="width: 100%;">
     <caption>Monthly savings</caption>
     <tr>
       <th>Item</th>
@@ -18,32 +19,7 @@
     <tr><td class="item">Milk</td><td class="price">50</td></tr>
   </table>
 
-  <script>
-    const getSumBtn = document.createElement("button");
-    getSumBtn.append("Get Total Price");
-    document.body.appendChild(getSumBtn);
-
-    const getSum = () => {
-      const priceCells = document.querySelectorAll(".price");
-      let total = 0;
-      priceCells.forEach(cell => {
-        total += Number(cell.textContent);
-      });
-
-      const table = document.querySelector("table");
-      const totalRow = document.createElement("tr");
-      const totalCell = document.createElement("td");
-      totalCell.setAttribute("colspan", "2");
-      totalCell.style.fontWeight = "bold";
-      totalCell.style.textAlign = "center";
-      totalCell.textContent = `Total Price: ₹${total}`;
-      totalRow.appendChild(totalCell);
-      table.appendChild(totalRow);
-
-      getSumBtn.disabled = true;
-    };
-
-    getSumBtn.addEventListener("click", getSum);
-  </script>
+  <!-- JS link -->
+  <script src="script.js"></script>
 </body>
 </html>

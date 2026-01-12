@@ -1,33 +1,29 @@
 const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
+getSumBtn.textContent = "Get Total Price";
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
   const prices = document.querySelectorAll(".price");
   let total = 0;
 
-  // Add all price values (even if they’re edited)
-  prices.forEach((cell) => {
-    total += parseFloat(cell.textContent) || 0; // handles empty or invalid values
+  prices.forEach(cell => {
+    total += Number(cell.textContent) || 0;
   });
 
   const table = document.querySelector("table");
-  const newRow = document.createElement("tr");
-  const totalCell = document.createElement("td");
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
 
-  // ✅ Cypress expects this element
-  totalCell.id = "ans";
-  totalCell.colSpan = 2;
-  totalCell.style.textAlign = "center";
-  totalCell.style.fontWeight = "bold";
+  cell.id = "ans";        // required
+  cell.colSpan = 2;       // merge both columns
+  cell.textContent = total; // only number, no text
 
-  // ✅ Must contain ONLY the total number (not extra words)
-  totalCell.textContent = total;
+  cell.style.textAlign = "center";
+  cell.style.fontWeight = "bold";
 
-  newRow.appendChild(totalCell);
-  table.appendChild(newRow);
+  row.appendChild(cell);
+  table.appendChild(row);
 
-  // Optional: disable button to avoid duplicates
   getSumBtn.disabled = true;
 };
 
